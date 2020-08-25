@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="31">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Hook"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+globalalloc(Hook, 1024) //r11
+globalalloc(key, 18432)
+globalalloc(index,4)
+globalalloc(temp,4)
+globalalloc(retaddr,4)
+label(case_ret)
+label(case_1)
+label(case_2)
+label(case_3)
+label(case_4)
+label(case_5)
+label(case_6)
+label(case_7)
+label(case_8)
+label(case_9)
+label(case_A)
+label(case_B)
+label(case_C)
+label(case_D)
+label(case_E)
+label(case_F)
+key:
+db 4
+index:
+db 1
+
+Hook:
+mov [temp],r12
+mov r12,[rsp]
+mov [retaddr],r12
+add rsp,8
+mov rax,rsp
+push rbp
+push rsi
+push rdi
+push r12
+push r13
+push r14
+mov r12,[temp]
+cmp r12,08
+jne case_1
+mov dl,00
+jmp case_ret
+case_1:
+
+cmp r12,01
+jne case_2
+mov dl,01
+jmp case_ret
+case_2:
+
+cmp r12,05
+jne case_3
+mov dl,02
+jmp case_ret
+case_3:
+
+cmp r12,02
+jne case_4
+mov dl,03
+jmp case_ret
+case_4:
+
+cmp r12,0D
+jne case_5
+mov dl,04
+jmp case_ret
+case_5:
+
+cmp r12,0A
+jne case_6
+mov dl,05
+jmp case_ret
+case_6:
+
+cmp r12,09
+jne case_7
+mov dl,06
+jmp case_ret
+case_7:
+
+cmp r12,0F
+jne case_8
+mov dl,07
+jmp case_ret
+case_8:
+
+cmp r12,00
+jne case_9
+mov dl,08
+jmp case_ret
+case_9:
+
+cmp r12,0E
+jne case_A
+mov dl,09
+jmp case_ret
+case_A:
+
+cmp r12,03
+jne case_B
+mov dl,0A
+jmp case_ret
+case_B:
+
+cmp r12,0B
+jne case_C
+mov dl,0B
+jmp case_ret
+case_C:
+
+cmp r12,04
+jne case_D
+mov dl,0C
+jmp case_ret
+case_D:
+
+cmp r12,0C
+jne case_E
+mov dl,0D
+jmp case_ret
+case_E:
+
+cmp r12,06
+jne case_F
+mov dl,0E
+jmp case_ret
+case_F:
+
+mov dl,F
+
+case_ret:
+mov r13,[index]
+lea r12,[key]
+mov byte ptr[r12+r13],dl
+inc [index]
+jmp [retaddr]
+
+CaptainHook.exe+8DC0: //0    //8
+mov r13,Hook
+call r13
+
+CaptainHook.exe+A2E0: //1    //1
+mov r13,Hook
+call r13
+
+CaptainHook.exe+B650: //2    //5
+mov r13,Hook
+call r13
+
+CaptainHook.exe+CB00: //3    //2
+mov r13,Hook
+call r13
+
+CaptainHook.exe+DFB0: //4    //D
+mov r13,Hook
+call r13
+
+CaptainHook.exe+F3F0: //5    //A
+mov r13,Hook
+call r13
+
+CaptainHook.exe+108A0://6    //9
+mov r13,Hook
+call r13
+
+CaptainHook.exe+11DD0://7    //F
+mov r13,Hook
+call r13
+
+CaptainHook.exe+13210://8    //0
+mov r13,Hook
+call r13
+
+CaptainHook.exe+147A0://9    //E
+mov r13,Hook
+call r13
+
+CaptainHook.exe+1240: //A    //3
+mov r13,Hook
+call r13
+
+CaptainHook.exe+2760: //B    //B
+mov r13,Hook
+call r13
+
+CaptainHook.exe+3C20: //C    //4
+mov r13,Hook
+call r13
+
+CaptainHook.exe+5060: //D    //C
+mov r13,Hook
+call r13
+
+CaptainHook.exe+64B0: //E    //6
+mov r13,Hook
+call r13
+
+CaptainHook.exe+7970: //F    //7
+mov r13,Hook
+call r13
+
+[DISABLE]
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry Color="80000008">
+      <Description>Change of cmp rax,r10</Description>
+      <AddressString>214C33D000C</AddressString>
+      <Before>
+        <Byte>10</Byte>
+        <Byte>00</Byte>
+        <Byte>72</Byte>
+        <Byte>16</Byte>
+        <Byte>90</Byte>
+      </Before>
+      <Actual>
+        <Byte>4C</Byte>
+        <Byte>39</Byte>
+        <Byte>D0</Byte>
+      </Actual>
+      <After>
+        <Byte>74</Byte>
+        <Byte>10</Byte>
+        <Byte>9D</Byte>
+        <Byte>58</Byte>
+        <Byte>FF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Change of je 214C33D0021</Description>
+      <AddressString>214C33D000F</AddressString>
+      <Before>
+        <Byte>16</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+      </Before>
+      <Actual>
+        <Byte>74</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>9D</Byte>
+        <Byte>58</Byte>
+        <Byte>FF</Byte>
+        <Byte>25</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Change of call qword ptr [CaptainHook.exe+1F260]</Description>
+      <AddressString>CaptainHook.exe+9B14</AddressString>
+      <Before>
+        <Byte>55</Byte>
+        <Byte>9F</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>FF</Byte>
+        <Byte>15</Byte>
+        <Byte>46</Byte>
+        <Byte>57</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>C8</Byte>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+        <Byte>74</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols>
+    <SymbolEntry>
+      <Name>Hook</Name>
+      <Address>213209C0000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>key</Name>
+      <Address>213209C0400</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>index</Name>
+      <Address>213209C4C00</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>temp</Name>
+      <Address>213209C4C10</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>retaddr</Name>
+      <Address>213209C4C20</Address>
+    </SymbolEntry>
+  </UserdefinedSymbols>
+</CheatTable>
